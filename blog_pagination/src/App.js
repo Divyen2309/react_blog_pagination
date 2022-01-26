@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import AddBlog from './Pages/AddBlog';
+import Blogcomments from './Pages/Blogcomments';
+import BlogDetail from './Pages/BlogDetail';
+// import logo from './logo.svg';
+import BlogList from './Pages/BlogList';
+// import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<BlogList />} />
+        <Route index element={<BlogList />} />
+
+        <Route path="blogData/:id" element={<AddBlog />} />
+        <Route path="blog/:id" element={<BlogDetail />} >
+          <Route path="comments/:id" element={<Blogcomments />} />
+        </Route>
+        {/* <Route path="teams" element={<Teams />}>
+            <Route path=":teamId" element={<Team />} />
+            <Route path="new" element={<NewTeamForm />} />
+            <Route index element={<LeagueStandings />} />
+          </Route> */}
+
+      </Routes>
+    </>
   );
 }
 
